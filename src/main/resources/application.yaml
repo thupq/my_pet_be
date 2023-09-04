@@ -1,0 +1,38 @@
+server:
+  port: 8288
+---
+spring:
+  application:
+    name: AdminService
+
+---
+logging:
+  level:
+    com.hocmai.backend: debug
+---
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/my_pets
+    username: postgres
+    password: 123456
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        enable_lazy_load_no_trans: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc.batch_size: 25
+        order_inserts: true
+        order_updates: true
+        show-sql: false
+  flyway:
+    enabled: true
+    locations:
+      - classpath:migration
