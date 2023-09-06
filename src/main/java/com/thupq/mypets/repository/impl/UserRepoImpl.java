@@ -16,31 +16,31 @@ import java.util.HashMap;
 public class UserRepoImpl extends BaseSearchRepoImpl implements UserRepoCustom {
     @Override
     public Page<UserResponse> searchUser(UserSearchRequest param, Pageable pageable) {
-        validateDate(param);
+//        validateDate(param);
         HashMap<String, Object> mapParams = new HashMap<>();
 
         StringBuilder baseSql = new StringBuilder(" from users us where 1 = 1 ");
         if (!StringUtil.isNullObject(param.getUserName())) {
-            baseSql.append(" and us.user_name =: userName ");
+            baseSql.append(" and us.user_name = :userName ");
             mapParams.put("userName", param.getUserName());
         }
 
         if (!StringUtil.isNullObject(param.getStatus())) {
-            baseSql.append(" and us.status =: status ");
+            baseSql.append(" and us.status = :status ");
             mapParams.put("status", param.getStatus());
         }
 
         if (!StringUtil.isNullObject(param.getContactPhone())) {
-            baseSql.append(" and us.contact_phone =: contactPhone ");
+            baseSql.append(" and us.contact_phone = :contactPhone ");
             mapParams.put("contactPhone", param.getContactPhone());
         }
 
-        baseSql.append(" and us.create_date >= :fromDate and us.create_date <= :toDate ");
-        mapParams.put("fromDate", param.getFromDate());
-        mapParams.put("toDate", param.getToDate());
+//        baseSql.append(" and us.create_date >= :fromDate and us.create_date <= :toDate ");
+//        mapParams.put("fromDate", param.getFromDate());
+//        mapParams.put("toDate", param.getToDate());
 
-        String countSql = "select count(*) ";
-        String dataSql = "select * ";
+        String countSql = "select count(1) ";
+        String dataSql = "select id, code, user_name, full_name, contact_phone, email, date_Of_birth, gender, description, status, create_date, create_by, update_date, update_by ";
 
         countSql = countSql + baseSql;
         dataSql = dataSql + baseSql + " order by us.create_date desc";

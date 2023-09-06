@@ -1,11 +1,12 @@
 package com.thupq.mypets.models.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.util.Date;
 
 @Data
 @Builder
@@ -24,7 +25,8 @@ public class UserResponse {
 
     private String email;
 
-    private Instant dateOfBirth;
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone="GMT+7")
+    private Date dateOfBirth;
 
     private String gender;
 
@@ -32,11 +34,13 @@ public class UserResponse {
 
     private String status;
 
-    private Instant createDate;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT+7")
+    private Date createDate;
 
     private String createBy;
 
-    private Instant updateDate;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT+7")
+    private Date updateDate;
 
     private String updateBy;
 }

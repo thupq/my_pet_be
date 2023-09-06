@@ -28,19 +28,19 @@ public class UserController extends BaseController {
         return ResponseEntity.ok(RestResult.ok(userService.create(userRequest)));
     }
 
-    @Operation(summary = "Get detail of a teacher")
+    @Operation(summary = "Get detail of a user")
     @GetMapping("/{id}")
     public ResponseEntity<RestResult<UserResponse>> detail(@PathVariable(name = "id") Long id) {
         return ResponseEntity.ok(RestResult.ok(userService.getDetails(id)));
     }
 
-//    @Operation(summary = "Update a teacher info")
-//    @PutMapping("/{id}")
-//    public ResponseEntity<RestResult<UserResponse>> update(@PathVariable("id") Long id, @Valid @RequestBody TeacherUpdateRequest teacherUpdateRequest) {
-//        return ResponseEntity.ok(RestResult.ok(teacherService.update(id, teacherUpdateRequest)));
-//    }
+    @Operation(summary = "Update a teacher info")
+    @PutMapping("/{id}")
+    public ResponseEntity<RestResult<UserResponse>> update(@PathVariable("id") Long id, @Valid @RequestBody UserRequest userUpdateRequest) {
+        return ResponseEntity.ok(RestResult.ok(userService.update(id,userUpdateRequest)));
+    }
 
-    @Operation(summary = "Get teacher list with filter supported")
+    @Operation(summary = "Get user list with filter supported")
     @PostMapping("/search")
     public ResponseEntity<RestResult<Page<UserResponse>>> search(@RequestBody UserSearchRequest userSearchRequest, Pageable pageable) {
         log.debug("REST request to search Teacher : {}", userSearchRequest);

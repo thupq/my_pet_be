@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -39,7 +39,7 @@ public class User {
     private String email;
 
     @Column(name = "date_of_birth")
-    private Instant dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "gender", length = 100)
     private String gender;
@@ -51,13 +51,13 @@ public class User {
     private String status;
 
     @Column(name = "create_date", nullable = false)
-    private Instant createDate;
+    private Date createDate;
 
     @Column(name = "create_by", nullable = false)
     private String createBy;
 
     @Column(name = "update_date")
-    private Instant updateDate;
+    private Date updateDate;
 
     @Column(name = "update_by")
     private String updateBy;

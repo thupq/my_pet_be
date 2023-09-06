@@ -16,6 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 import static com.thupq.mypets.common.MessageUtils.getMessage;
 
 @Slf4j
@@ -43,6 +45,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<UserResponse> searchUser(UserSearchRequest userSearchRequest, Pageable pageable) {
         return userRepoCustom.searchUser(userSearchRequest, pageable);
+    }
+
+    @Override
+    public UserResponse update(Long id, UserRequest userUpdateRequest) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new ValidateException(getMessage(MessageCode.Teacher.NOT_EXISTS))
+        );
+        userMapper.partialUpdate(user, userUpdateRequest);
+        userRepository.save(user);
+        return userMapper.toDto(user);
     }
 
 }

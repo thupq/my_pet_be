@@ -5,7 +5,6 @@ import com.thupq.mypets.models.request.UserSearchRequest;
 import com.thupq.mypets.models.response.UserResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 public interface UserService {
     UserResponse create(UserRequest userRequest);
@@ -13,4 +12,6 @@ public interface UserService {
     UserResponse getDetails(Long id);
 
     Page<UserResponse> searchUser(UserSearchRequest userSearchRequest, Pageable pageable);
+
+    UserResponse update(Long id, UserRequest userUpdateRequest);
 }

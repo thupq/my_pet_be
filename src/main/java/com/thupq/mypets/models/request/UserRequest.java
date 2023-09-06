@@ -25,7 +25,7 @@ public class UserRequest {
 
     private String email;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone="GMT+7")
     private Date dateOfBirth;
 
     private String gender;
@@ -34,16 +34,15 @@ public class UserRequest {
 
     private String status;
 
-    @JsonIgnore
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT+7")
     private Instant createDate;
 
     @JsonIgnore
     private String createBy;
 
-    @JsonIgnore
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT+7")
     private Instant updateDate;
 
     @JsonIgnore
     private String updateBy;
 }
-//trong postman nhập trường dateOfBirth dạng thế nào cho đúng

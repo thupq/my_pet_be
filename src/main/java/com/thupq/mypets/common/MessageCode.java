@@ -136,7 +136,7 @@ public class MessageCode {
     // Validate customerService
     public static final String CUSTOMER_SERVICE_REQUIRED = "error.teacher.customerService.required";
     // Student not found
-    public static final String NOT_EXISTS = "error.teacher.not.exists";
+    public static final String NOT_EXISTS = "error.user.not.exists";
 
     // Validate class_in_phone
     public static final String CLASS_IN_PHONE_REQUIRED = "error.teacher.classInPhone.required";
