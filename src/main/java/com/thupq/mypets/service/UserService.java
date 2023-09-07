@@ -14,4 +14,8 @@ public interface UserService {
     Page<UserResponse> searchUser(UserSearchRequest userSearchRequest, Pageable pageable);
 
     UserResponse update(Long id, UserRequest userUpdateRequest);
+
+    String delete(Long id);
+
+    String signin(String username, String password);
 }

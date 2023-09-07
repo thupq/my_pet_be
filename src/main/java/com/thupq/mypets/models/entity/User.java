@@ -47,7 +47,7 @@ public class User {
     @Column(name = "description", length = 1000)
     private String description;
 
-    @Column(name = "status", length = 100)
+    @Column(name = "status", length = 10)
     private String status;
 
     @Column(name = "create_date", nullable = false)

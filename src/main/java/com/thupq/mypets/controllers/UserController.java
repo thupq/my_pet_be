@@ -22,6 +22,12 @@ import javax.validation.Valid;
 public class UserController extends BaseController {
     private final UserService userService;
 
+    @PostMapping("/signin")
+    @Operation(summary =  "UserController.signin")
+    public String login( @RequestParam String username, @RequestParam String password) {
+        return userService.signin(username, password);
+    }
+
     @Operation(summary = "Create a users")
     @PostMapping
     public ResponseEntity<RestResult<UserResponse>> createTeacher(@Valid @RequestBody UserRequest userRequest) {
@@ -34,7 +40,7 @@ public class UserController extends BaseController {
         return ResponseEntity.ok(RestResult.ok(userService.getDetails(id)));
     }
 
-    @Operation(summary = "Update a teacher info")
+    @Operation(summary = "Update a user info")
     @PutMapping("/{id}")
     public ResponseEntity<RestResult<UserResponse>> update(@PathVariable("id") Long id, @Valid @RequestBody UserRequest userUpdateRequest) {
         return ResponseEntity.ok(RestResult.ok(userService.update(id,userUpdateRequest)));
@@ -46,4 +52,11 @@ public class UserController extends BaseController {
         log.debug("REST request to search Teacher : {}", userSearchRequest);
         return ResponseEntity.ok(RestResult.ok(userService.searchUser(userSearchRequest, pageable)));
     }
+
+    @Operation(summary = "Delete a user info (update status = 0 )")
+    @PutMapping("/delete/{id}")
+    public ResponseEntity<RestResult<String>> update(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(RestResult.ok(userService.delete(id)));
+    }
+
 }

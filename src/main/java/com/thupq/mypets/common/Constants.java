@@ -11,8 +11,8 @@ public class Constants {
   public static final int LIKE_STARTS_WITH = 2;
   public static final int LIKE_ENDS_WITH = 1;
 
-  public static final String STATUS_ACTIVE = "ACTIVE";
-  public static final String STATUS_INACTIVE = "INACTIVE";
+  public static final String STATUS_ACTIVE = "1";
+  public static final String STATUS_INACTIVE = "0";
   public static final String TIMEZONE_VN = "Asia/Ho_Chi_Minh";
   public static final String SESSION_NAME_PREFIX = "Session";
 
