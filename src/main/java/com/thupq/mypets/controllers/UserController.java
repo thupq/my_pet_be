@@ -17,15 +17,15 @@ import javax.validation.Valid;
 
 @Slf4j
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/i/users")
 @RequiredArgsConstructor
 public class UserController extends BaseController {
     private final UserService userService;
 
     @PostMapping("/signin")
     @Operation(summary =  "UserController.signin")
-    public String login( @RequestParam String username, @RequestParam String password) {
-        return userService.signin(username, password);
+    public String login( @RequestParam String userName, @RequestParam String password) {
+        return userService.signin(userName, password);
     }
 
     @Operation(summary = "Create a users")

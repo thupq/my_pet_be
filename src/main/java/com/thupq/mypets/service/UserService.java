@@ -17,5 +17,5 @@ public interface UserService {
 
     String delete(Long id);
 
-    String signin(String username, String password);
+    String signin(String userName, String password);
 }

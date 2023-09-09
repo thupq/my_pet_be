@@ -2,6 +2,7 @@ package com.thupq.mypets.service.impl;
 
 import com.thupq.mypets.common.Constants;
 import com.thupq.mypets.common.MessageCode;
+import com.thupq.mypets.configurations.security.UserAuthenticationProvider;
 import com.thupq.mypets.exceptions.ValidateException;
 import com.thupq.mypets.models.entity.User;
 import com.thupq.mypets.models.request.UserRequest;
@@ -9,7 +10,6 @@ import com.thupq.mypets.models.request.UserSearchRequest;
 import com.thupq.mypets.models.response.UserResponse;
 import com.thupq.mypets.repository.UserRepoCustom;
 import com.thupq.mypets.repository.UserRepository;
-import com.thupq.mypets.security.JwtTokenProvider;
 import com.thupq.mypets.service.UserService;
 import com.thupq.mypets.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.nio.CharBuffer;
 import java.util.Date;
 
 import static com.thupq.mypets.common.MessageUtils.getMessage;
@@ -36,8 +37,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserRepoCustom userRepoCustom;
     private final PasswordEncoder passwordEncoder;
-    private final JwtTokenProvider jwtTokenProvider;
-    private final AuthenticationManager authenticationManager;
+    private final UserAuthenticationProvider userAuthenticationProvider;
 
     @Override
     @Transactional
@@ -90,13 +90,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String signin(String username, String password) {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-            return jwtTokenProvider.createToken(username);
-        } catch (AuthenticationException e) {
-            throw new ValidateException("Invalid username/password supplied");
+    public String signin(String userName, String password) {
+        User user = userRepository.findByUserName(userName).orElseThrow(
+                () -> new ValidateException(getMessage(MessageCode.Teacher.NOT_EXISTS))
+        );
+        if (passwordEncoder.matches(CharBuffer.wrap(password), user.getPassword())) {
+            return userAuthenticationProvider.createToken(userName);
         }
+        throw new ValidateException("Invalid username/password supplied");
     }
 
 }
