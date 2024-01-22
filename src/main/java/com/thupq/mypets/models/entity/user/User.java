@@ -1,4 +1,4 @@
-package com.thupq.mypets.models.entity;
+package com.thupq.mypets.models.entity.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.thupq.mypets.repository;
+package com.thupq.mypets.repository.user.impl;
 
 import com.thupq.mypets.models.request.UserSearchRequest;
 import com.thupq.mypets.models.response.UserResponse;

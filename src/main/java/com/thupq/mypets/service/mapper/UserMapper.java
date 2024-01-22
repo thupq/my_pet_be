@@ -1,7 +1,7 @@
 package com.thupq.mypets.service.mapper;
 
 import com.thupq.mypets.common.Constants;
-import com.thupq.mypets.models.entity.User;
+import com.thupq.mypets.models.entity.user.User;
 import com.thupq.mypets.models.request.UserRequest;
 import com.thupq.mypets.models.response.UserResponse;
 import org.mapstruct.*;

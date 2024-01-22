@@ -1,6 +1,6 @@
-package com.thupq.mypets.repository;
+package com.thupq.mypets.repository.user.impl;
 
-import com.thupq.mypets.models.entity.User;
+import com.thupq.mypets.models.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

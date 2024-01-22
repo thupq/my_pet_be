@@ -1,4 +1,4 @@
-package com.thupq.mypets.repository.impl;
+package com.thupq.mypets.repository;
 
 import com.thupq.mypets.utils.QueryUtil;
 import com.thupq.mypets.utils.Tools;

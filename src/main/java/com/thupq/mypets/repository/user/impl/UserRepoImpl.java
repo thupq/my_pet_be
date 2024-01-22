@@ -1,9 +1,9 @@
-package com.thupq.mypets.repository.impl;
+package com.thupq.mypets.repository.user.impl;
 
 import com.thupq.mypets.exceptions.ValidateException;
 import com.thupq.mypets.models.request.UserSearchRequest;
 import com.thupq.mypets.models.response.UserResponse;
-import com.thupq.mypets.repository.UserRepoCustom;
+import com.thupq.mypets.repository.BaseSearchRepoImpl;
 import com.thupq.mypets.utils.StringUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
